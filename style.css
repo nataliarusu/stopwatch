@@ -8,7 +8,7 @@
   --light-brown: #b68049;
   --main-green: #28ab26;
   --main-red: #ff4b4b;
-  --timer-output: #7a0000;
+  --timer-output: black;
 }
 * {
   box-sizing: border-box;
