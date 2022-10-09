@@ -34,13 +34,17 @@ body {
 .timer-container > :first-child {
   margin-top: 2rem;
 }
-.timer-output {
+.main-timer-output {
   font-size: 3rem;
   color: var(--timer-output);
 }
-.timer-output > * {
+.main-timer-output > * {
   display: inline-block;
   width: 4rem;
+}
+.lap-item> :first-child{
+  padding: 0 0.5rem;
+  color: var(--dark-brown);
 }
 
 /*timer buttons*/
