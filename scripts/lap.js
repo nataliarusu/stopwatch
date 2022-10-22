@@ -1,10 +1,6 @@
-const addLapBtn = document.querySelector('.add-lap');
-const clearLapsBtn = document.querySelector('.clear-lap');
 const ol = document.querySelector('.laps');
 
 let laps = [];
-let split_lap = [];
-
 const renderLapItem = (ltd, mtd) => {
   const li = document.createElement('li');
   li.classList.add('lap-item');
@@ -18,17 +14,25 @@ const renderLapItem = (ltd, mtd) => {
 
 const generateStrLap = (timer) => {
   let str = '';
-  for (const key in timer) {
-    if (timer[key] < 10) {
-      str += `0${timer[key]}:`;
-    } else {
-      str += `${timer[key]}:`;
+  for (const [key, value] of Object.entries(timer)) {
+    //Object.entries(timer) own props only, not prototype
+    if (timer[key] !== timer.timerDOMels) {
+      if (value < 10) {
+        str += `0${value}:`;
+      } else {
+        str += `${value}:`;
+      }
     }
   }
   return str.slice(0, -1);
 };
-
-const addLapHandler = () => {
+/**
+ *
+ * @param {Timer} main_timer
+ * @param {Timer} lap_timer
+ *
+ */
+export const addLap = (main_timer, lap_timer) => {
   let lap_timer_data = generateStrLap(lap_timer);
   let main_timer_data = generateStrLap(main_timer);
 
@@ -38,11 +42,10 @@ const addLapHandler = () => {
     ol.classList.add('scroll');
   }
   localStorage.setItem('lap-data', JSON.stringify(laps));
-  reset_Timer(lap_timer);
-  reset_Span(lap_timerSpans);
+  lap_timer.reset();
 };
 
-const checkSavedLaps = () => {
+export const checkSavedLaps = () => {
   const savedLaps = JSON.parse(localStorage.getItem('lap-data')) || [];
   if (savedLaps.length > 0) {
     laps = [...savedLaps];
@@ -53,13 +56,9 @@ const checkSavedLaps = () => {
   }
 };
 
-const clearLaps = () => {
-  reset_Timer(lap_timer);
-  reset_Span(lap_timerSpans);
+export const clearLaps = () => {
   localStorage.removeItem('lap-data');
   laps = [];
   ol.innerHTML = '';
   ol.classList.remove('scroll');
 };
-clearLapsBtn.addEventListener('click', clearLaps);
-addLapBtn.addEventListener('click', addLapHandler);
