@@ -1,10 +1,11 @@
 # timer
-see in action https://nataliarusu.github.io/timer/
 
 This timer allows a user
 - Start/Stop at any time or Reset.
 - Takes an individual Lap time
 - Stores the list of each Lap
+
+See in action https://nataliarusu.github.io/timer/
 
 ---
 
