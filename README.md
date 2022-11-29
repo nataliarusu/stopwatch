@@ -13,7 +13,7 @@ Stopwatch was built using JavaScript, HTML and CSS.
 - "Clear lap" button: clears any lap history
 
 
-See in action https://nataliarusu.github.io/timer/
+See in action https://nataliarusu.github.io/stopwatch/
 
 ---
 
