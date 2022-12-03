@@ -20,20 +20,27 @@ Timer.prototype = {
     if (this.cs_seconds === 100) {
       this.cs_seconds = 0;
       this.seconds += 1;
-      secondsEl.innerHTML =
-        this.seconds < 10 ? `0${this.seconds}` : `${this.seconds}`;
+      if (this.seconds < 60) {
+        secondsEl.innerHTML =
+          this.seconds < 10 ? `0${this.seconds}` : `${this.seconds}`;
+      }
     }
     if (this.seconds === 60) {
       this.seconds = 0;
       this.minutes += 1;
-      minutesEl.innerHTML =
-        this.minutes < 10 ? `0${this.minutes}` : `0${this.minutes}`;
+      secondsEl.innerHTML = `0${this.seconds}`;
+      if (this.minutes < 60) {
+        minutesEl.innerHTML =
+          this.minutes < 10 ? `0${this.minutes}` : `0${this.minutes}`;
+      }
     }
     if (this.minutes === 60) {
       this.minutes = 0;
       this.hours += 1;
+      minutesEl.innerHTML = `0${this.minutes}`;
       hoursEl.innerHTML = this.hours < 10 ? `0${this.hours}` : `${this.hours}`;
     }
+
     csSecondsEl.innerHTML =
       this.cs_seconds < 10 ? `0${this.cs_seconds}` : `${this.cs_seconds}`;
   },
